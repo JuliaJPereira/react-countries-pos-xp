@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Main from '../components/Main';
 import { allCountries } from '../data/countries';
 import TextInput from './../components/TextInput';
+import Countries from '../components/Countries';
 
 export default function ReactCountriesPage() {
   const [countryFilter, setCountryFilter] = useState('Argentina');
@@ -20,8 +21,6 @@ export default function ReactCountriesPage() {
         })
       : allCountries;
 
-  console.log(filteredCountries);
-
   return (
     <div>
       <Header>react-countries</Header>
@@ -33,6 +32,7 @@ export default function ReactCountriesPage() {
           autoFocus
           onInputChange={handleCountryFilterChange}
         />
+        <Countries>{filteredCountries}</Countries>
       </Main>
     </div>
   );
