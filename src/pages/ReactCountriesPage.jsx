@@ -11,7 +11,7 @@ export default function ReactCountriesPage() {
     setCountryFilter(newCountryFilter);
   }
 
-  const countryFilterLowerCase = countryFilter.toLowerCase();
+  const countryFilterLowerCase = countryFilter.trim().toLowerCase();
 
   const filteredCountries =
     countryFilterLowerCase.length >= 3
