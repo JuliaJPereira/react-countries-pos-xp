@@ -1,15 +1,27 @@
 import Item from './Item';
 
-export default function Country({ children: country = null }) {
+export default function Country({
+  children: country = null,
+  onCountryClick = null,
+}) {
   if (country === null) {
     return <div>Impossível renderizar o país</div>;
+  }
+
+  function handleCountryClick() {
+    if (onCountryClick) {
+      onCountryClick(country.id);
+    }
   }
 
   const demographicDensity = country.population / country.area;
   const { flag, name, capital, region, population, area } = country;
 
   return (
-    <div className="border p-2 m-2 flex flex-row items-center space-x-2">
+    <div
+      className="border p-2 m-2 flex flex-row items-center space-x-2"
+      onClick={handleCountryClick}
+    >
       <img className="w-48" src={flag} alt={name} />
       <ul>
         <li>
