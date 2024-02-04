@@ -50,7 +50,10 @@ export default function ReactCountriesPage() {
           autoFocus
           onInputChange={handleCountryFilterChange}
         />
-        <Countries onCountryClick={toggleVisitedCountry}>
+        <Countries
+          visitedCountries={visitedCountries}
+          onCountryClick={toggleVisitedCountry}
+        >
           {filteredCountries}
         </Countries>
       </Main>
