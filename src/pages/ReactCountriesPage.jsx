@@ -5,11 +5,22 @@ import { allCountries } from '../data/countries';
 import TextInput from './../components/TextInput';
 
 export default function ReactCountriesPage() {
-  const [ContryFilter, setCountryFilter] = useState('Argentina');
+  const [countryFilter, setCountryFilter] = useState('Argentina');
 
   function handleCountryFilterChange(newCountryFilter) {
     setCountryFilter(newCountryFilter);
   }
+
+  const countryFilterLowerCase = countryFilter.toLowerCase();
+
+  const filteredCountries =
+    countryFilterLowerCase.length >= 3
+      ? allCountries.filter(({ nameLowerCase }) => {
+          return nameLowerCase.includes(countryFilterLowerCase);
+        })
+      : allCountries;
+
+  console.log(filteredCountries);
 
   return (
     <div>
@@ -18,7 +29,7 @@ export default function ReactCountriesPage() {
         <TextInput
           id="inputCountryFilter"
           labelDescription="Informe o nome do país (pelo menos 3 caracteres):"
-          inputValue={ContryFilter}
+          inputValue={countryFilter}
           autoFocus
           onInputChange={handleCountryFilterChange}
         />
